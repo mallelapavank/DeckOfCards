@@ -1,8 +1,7 @@
 void main() {
   var deck = new Deck();
-  print(deck);
-  print(deck.removeCard("Diamonds", "Ace"));
-  print(deck);
+  deck.shuffle();
+  print(deck.deal(5));
 }
 
 class Deck {
@@ -14,7 +13,10 @@ class Deck {
     
     for (var suit in suits) {
       for (var rank in ranks) {
-        var card = new Card(rank, suit);
+        var card = new Card(
+          rank: rank, 
+          suit: suit
+        );
         cards.add(card);
       }
     }
@@ -48,7 +50,7 @@ class Card {
   String suit;
   String rank;
   
-  Card(this.rank, this.suit);
+  Card({this.rank, this.suit});
   
   toString() {
     return '$rank of $suit';
